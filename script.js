@@ -89,7 +89,7 @@ const avatars = (posters, users) => {
         <img src="${userAvatarUrl}" alt="${user.name}" />
       `;
     }
-  });
+  }).join("");
 };
 
 const fetchData = async () => {
@@ -122,11 +122,15 @@ const showLatestPosts = (data) => {
       return `
             <tr>
               <td>
-                <p class="post-title">${title}</p>
+                <a href="${forumTopicUrl}${slug}/${id}" target="_blank" class="post-title">${title}</a>
                 ${forumCategory(category_id)}
               </td>
 
-              <td></td>
+              <td>
+                <div class="avatar-container">
+                  ${avatars(posters, users)}
+                </div>
+              </td>
               
               <td>${posts_count - 1}</td>
               
